@@ -2,23 +2,42 @@
     <div class="header-container">
 
         <div class="logo">
-            🔴 NexusShop
+            <img src="#" >
+            NexusShop
         </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+        </nav>
 
         <div class="search-box">
             <input type="text" placeholder="Buscar produtos..." />
             <button>🔍</button>
         </div>
 
+        @if (loggedIn){
+        <div class="actions">
+            <a href="#">Favourites (icon)</a>
+            <a href="#">
+                Cart (icon)
+                <span class="badge">2</span>
+            </a>
+            <button>
+                <img src="#" alt="account-profile">
+            </button>
+        </div>
+        } @else {
         <div class="actions">
             <a href="#">Entrar</a>
-            <a href="#">Pedidos</a>
 
-            <div class="cart">
-                🛒
+            <div>|</div>
+            
+            <a href="#">
+                Cart (icon)
                 <span class="badge">2</span>
-            </div>
+            </a>
         </div>
-
+        }
     </div>
 </header>

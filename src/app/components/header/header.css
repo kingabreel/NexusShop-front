@@ -1,8 +1,12 @@
 .header {
-    background: linear-gradient(90deg, #b30000, #ff1a1a);
+    background: linear-gradient(90deg, #fcfcfc, #f1f1f1);
     padding: 12px 20px;
-    color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
 }
 
 .header-container {
@@ -10,20 +14,49 @@
     align-items: center;
     justify-content: space-between;
     max-width: 1200px;
-    margin: auto;
-    gap: 20px;
+    gap: 80px;
 }
 
 .logo {
     font-size: 22px;
     font-weight: bold;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    color: #50d2e9;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+nav>a,
+div.actions>a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px
+}
+
+nav>a:hover,
+div.actions>a:hover {
+    color: #60cde0;
+    transition: color 0.3s ease-in-out;
 }
 
 .search-box {
     display: flex;
     flex: 1;
-    max-width: 500px;
+    width: 450px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .search-box input {
@@ -35,7 +68,7 @@
 }
 
 .search-box button {
-    background: #800000;
+    background: #50d2e9;
     border: none;
     color: white;
     padding: 0 15px;
@@ -44,7 +77,7 @@
 }
 
 .search-box button:hover {
-    background: #660000;
+    background: #60cde0;
 }
 
 .actions {
