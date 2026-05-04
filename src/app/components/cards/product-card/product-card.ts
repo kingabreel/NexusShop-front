@@ -6,8 +6,8 @@ import { Product } from '../../../shared/interface/product';
   imports: [],
   templateUrl: './product-card.html',
   styleUrl: './product-card.css',
+  standalone: true
 })
 export class ProductCard {
-  @Input()
-  product: Product | undefined;
+  @Input() product!: Product;
 }

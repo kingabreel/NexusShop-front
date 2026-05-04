@@ -1,26 +1,26 @@
 <div class="card-container">
-    <div class="tags">
-        @if (product && product.tags.length > 0) {
-            @for (tag of product.tags; track tag) {
-                <span>{{ tag }}</span>
-            }
+    <!-- <div class="tags">
+        @if (product?.tags) {
+        @for (tag of product?.tags; track tag) {
+        <span>{{ tag }}</span>
         }
-    </div>
+        }
+    </div> -->
 
-    <img src="{{ product?.imgUrl }}" alt="product-img">
+    <img src="{{ product.imgUrl }}" alt="product-img">
 
     <div class="card-content">
         <div class="card-content_row">
-            <h1>{{ product?.name }}</h1>
-            <h3>{{ product?.rating }}</h3>
+            <h1>{{ product.name }}</h1>
+            <h3>{{ product.rating }}</h3>
         </div>
-        <h2>{{ product?.description }}</h2>
+        <h2>{{ product.description }}</h2>
 
         <div class="final-row">
             <div class="price">
-                <p class="final-price">R$ {{ product?.price }}</p>
+                <p class="final-price">R$ {{ product.price }}</p>
                 @if (product && product.originalPrice > product.price) {
-                    <p class="original-price">R$ {{ product.originalPrice }}</p>
+                <p class="original-price">R$ {{ product.originalPrice }}</p>
                 }
             </div>
 

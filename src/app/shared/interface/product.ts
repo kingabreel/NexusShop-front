@@ -6,5 +6,5 @@ export interface Product {
     originalPrice: number;
     rating: number;
     imgUrl: string;
-    tags: string[];
+    tags?: string[];
 }
