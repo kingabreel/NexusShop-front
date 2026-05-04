@@ -7,7 +7,7 @@
         }
     </div> -->
 
-    <img src="{{ product.imgUrl }}" alt="product-img">
+    <img src="{{ product.imgUrl ? product.imgUrl : 'https://placehold.co/400' }}" alt="product-img">
 
     <div class="card-content">
         <div class="card-content_row">
