@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environment/environment';
+import { ApiResponse } from '../interface/apiResponse';
 
 export abstract class AbstractService<T> {
     protected abstract endpoint: string;
@@ -8,10 +9,13 @@ export abstract class AbstractService<T> {
 
     constructor(protected http: HttpClient) { }
 
-    getAll(params?: any): Observable<T[]> {
-        return this.http.get<T[]>(this.endpoint, {
-            params: this.buildParams(params),
-        });
+    getAll(params?: any): Observable<ApiResponse<T>> {
+        return this.http.get<ApiResponse<T>>(
+            `${this.baseUrl}/${this.endpoint}`,
+            {
+                params: this.buildParams(params),
+            }
+        );
     }
 
     getById(id: number | string): Observable<T> {
