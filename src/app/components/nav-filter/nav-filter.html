@@ -1,0 +1,54 @@
+<div class="filter-container">
+    <div class="filter-top">
+        <div style="display: flex; gap: 5px;">
+            <span>Emoji</span>
+            <h1>Filters</h1>
+        </div>
+        <div>
+            <span>Clear all</span>
+        </div>
+    </div>
+
+    <div class="divisor"></div>
+
+    <div class="filter-category">
+        <h1>Categories</h1>
+        @for (category of categories; track $index) {
+        <div>
+            <span style="cursor: pointer;">{{ category.toLocaleLowerCase() }}</span>
+        </div>
+        }
+    </div>
+
+    <div class="divisor"></div>
+
+    <div class="filter-price">
+        <h1>Price range</h1>
+        <mat-slider [max]="1500" [min]="30" [discrete]="true">
+            <input #slider [(ngModel)]="minValue" matSliderStartThumb>
+            <input #slider [(ngModel)]="maxValue" matSliderEndThumb>
+
+        </mat-slider>
+
+        <div class="range-inputs" style="margin: auto;">
+            <mat-form-field>
+                <mat-label>Min</mat-label>
+                <input matInput [(ngModel)]="minValue" #slider>
+            </mat-form-field>
+            <span>to</span>
+            <mat-form-field>
+                <mat-label>Max</mat-label>
+                <input matInput [(ngModel)]="maxValue" #slider>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="by-tag">
+        <h1>By tag</h1>
+        @for (tag of tags; track $index) {
+        <div>
+            <span style="cursor: pointer;">{{ tag }}</span>
+        </div>
+        }
+    </div>
+</div>
