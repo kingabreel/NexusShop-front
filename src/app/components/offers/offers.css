@@ -1,0 +1,40 @@
+.offers {
+  padding: 3rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.offers h2 {
+  background: #e4f7fa;
+  color: #38dafa;
+  border: 1px solid #38dafa;
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+
+  margin: 0 auto;
+}
+
+.offers h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.offers p {
+  color: #777777;
+  font-size: 0.95rem;
+}
+
+.offers {
+  text-align: center;
+}
+
+.offers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}

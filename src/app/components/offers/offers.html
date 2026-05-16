@@ -1,0 +1,16 @@
+<section class="offers">
+  <div class="offers-header">
+    <div>
+      <h2>Featured Offers</h2>
+      <h1>Hot This Week</h1>
+      <p>Check out our most popular items from both our retail shop and restaurant partners. Limited time discounts available!</p>
+    </div>
+  </div>
+
+  <div class="offers-grid">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product">
+    </app-product-card>
+  </div>
+</section>

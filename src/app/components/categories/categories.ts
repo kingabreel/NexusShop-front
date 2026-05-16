@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-categories',
   imports: [MatIconModule],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+  templateUrl: './categories.html',
+  styleUrl: './categories.css',
 })
-export class Header {
-  loggedIn: boolean = false;
+export class Categories {
+
 }

@@ -1,61 +1,33 @@
 <main class="main">
 
-    <!-- Banner -->
-    <section class="banner">
-        <div class="banner-content">
-            <h1>Ofertas Imperdíveis 🔥</h1>
-            <p>Descontos de até 50% em produtos selecionados</p>
-            <button>Ver ofertas</button>
-        </div>
-    </section>
+  <!-- Hero/Banner -->
+  <section class="hero">
 
-    <!-- Categorias -->
-    <section class="categories">
-        <h2>Categorias</h2>
+    <div class="hero-text">
+      <span class="badge">NEW: Unified Delivery Experience</span>
+      <h1>Everything You Need, <span class="highlight">All in One Place.</span></h1>
+      <p>From the latest flagship electronics to your favorite local gourmet dishes. NexusShop brings premium shopping and dining to your doorstep in 30 minutes.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary">Shop Products →</button>
+        <button class="btn-secondary">Order Food <mat-icon>🍽restaurant</mat-icon></button>
+      </div>
+      <div class="hero-badges">
+        <span class="badge-item"><mat-icon>local_shipping</mat-icon> Free Delivery</span>
+        <span class="badge-item"><mat-icon>verified_user</mat-icon> Secure Payment</span>
+      </div>
+    </div>
 
-        <div class="category-list">
-            <div class="category-card">📱 Eletrônicos</div>
-            <div class="category-card">👕 Moda</div>
-            <div class="category-card">🏠 Casa</div>
-            <div class="category-card">🎮 Games</div>
-        </div>
-    </section>
+    <div class="hero-grid">
+      <img src="https://plus.unsplash.com/premium_photo-1681286767930-45023f5d0195?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Notebook"/>
+      <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=700&auto=format&fit=crop&q=60" alt="Hamburguer"/>
+      <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=700&auto=format&fit=crop&q=60" alt="Fone"/>
+      <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=700&auto=format&fit=crop&q=60" alt="Salada"/>
+    </div>
 
-    <!-- Produtos -->
-    <section class="products">
-        <h2>Produtos em destaque</h2>
+  </section>
 
-        <div class="product-grid">
+  <app-categories></app-categories>
 
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Produto" />
-                <h3>Produto 1</h3>
-                <p class="price">R$ 99,90</p>
-                <button>Comprar</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Produto" />
-                <h3>Produto 2</h3>
-                <p class="price">R$ 149,90</p>
-                <button>Comprar</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Produto" />
-                <h3>Produto 3</h3>
-                <p class="price">R$ 79,90</p>
-                <button>Comprar</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="Produto" />
-                <h3>Produto 4</h3>
-                <p class="price">R$ 199,90</p>
-                <button>Comprar</button>
-            </div>
-
-        </div>
-    </section>
+  <app-offers> </app-offers>
 
 </main>
