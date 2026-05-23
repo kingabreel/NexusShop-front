@@ -1,0 +1,161 @@
+<div class="auth-container">
+
+    <div class="auth-left">
+
+        <mat-card class="auth-card">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <mat-icon>bolt</mat-icon>
+                </div>
+
+                <h1>Nexus Shop</h1>
+
+            </div>
+
+            <h2>Bem-vindo</h2>
+
+            <p class="subtitle">
+                Faça login ou crie sua conta
+            </p>
+
+            <mat-tab-group animationDuration="300ms">
+
+                <mat-tab label="Login">
+
+                    <form style="overflow: hidden;" [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+
+                            <input matInput type="email" formControlName="email">
+
+                            <mat-icon matSuffix>
+                                mail
+                            </mat-icon>
+
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>Senha</mat-label>
+
+                            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+
+                            <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+
+                                <mat-icon>
+                                    {{
+                                    hidePassword
+                                    ? 'visibility_off'
+                                    : 'visibility'
+                                    }}
+                                </mat-icon>
+
+                            </button>
+
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" class="submit-button">
+
+                            Entrar
+
+                        </button>
+
+                    </form>
+
+                </mat-tab>
+
+                <mat-tab label="Registro">
+
+                    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Nome</mat-label>
+
+                            <input matInput formControlName="name">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+
+                            <input matInput type="email" formControlName="email">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label>Celular</mat-label>
+
+                            <input matInput formControlName="cellphone">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+
+                            <mat-label>Senha</mat-label>
+
+                            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary" class="submit-button">
+
+                            Criar conta
+
+                        </button>
+
+                    </form>
+
+                </mat-tab>
+
+            </mat-tab-group>
+
+        </mat-card>
+
+    </div>
+
+    <div class="auth-right">
+
+        <div class="gradient-circle top"></div>
+        <div class="gradient-circle bottom"></div>
+
+        <div class="content">
+
+            <span class="badge">
+                Plataforma moderna
+            </span>
+
+            <h1>
+                Experiência elegante
+                <br>
+                para autenticação
+            </h1>
+
+            <p>
+                Interface construída com Angular Material,
+                animações suaves e visual moderno.
+            </p>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <mat-icon>security</mat-icon>
+                    <span>Segurança</span>
+                </div>
+
+                <div class="feature-card">
+                    <mat-icon>bolt</mat-icon>
+                    <span>Performance</span>
+                </div>
+
+                <div class="feature-card">
+                    <mat-icon>cloud</mat-icon>
+                    <span>Cloud Ready</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
