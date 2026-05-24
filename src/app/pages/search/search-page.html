@@ -1,0 +1,48 @@
+<div class="search-page">
+  <app-nav-filter class="sidebar"></app-nav-filter>
+
+  <div class="content">
+    <div class="content-header">
+      <div class="results-info">
+        <h2>Resultados</h2>
+        <span>{{ products.length }} produtos encontrados</span>
+      </div>
+
+      <div class="sort-container">
+        <label for="sort">Sort by:</label>
+
+        <select id="sort" [(ngModel)]="selectedSort">
+          <option value="POPULAR">Popularidade</option>
+          <option value="PRICE_ASC">Menor preço</option>
+          <option value="PRICE_DESC">Maior preço</option>
+          <option value="RATING">Melhor avaliação</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <app-product-card
+        *ngFor="let product of paginatedProducts"
+        [product]="product">
+      </app-product-card>
+    </div>
+
+    <div class="pagination">
+      <button
+        (click)="previousPage()"
+        [disabled]="currentPage === 1">
+        Anterior
+      </button>
+
+      <span>
+        Página {{ currentPage }} de {{ totalPages }}
+      </span>
+
+      <button
+        (click)="nextPage()"
+        [disabled]="currentPage === totalPages">
+        Próxima
+      </button>
+    </div>
+  </div>
+</div>
