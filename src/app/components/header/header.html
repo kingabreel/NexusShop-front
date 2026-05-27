@@ -1,8 +1,8 @@
 <header class="header">
+
     <div class="header-container">
 
         <div class="logo">
-            <img src="#" >
             NexusShop
         </div>
 
@@ -13,31 +13,48 @@
 
         <div class="search-box">
             <input type="text" placeholder="Buscar produtos..." />
+
             <button>🔍</button>
         </div>
 
-        @if (loggedIn){
+        @if (authStore.isAuthenticated()) {
+
         <div class="actions">
-            <a href="#">Favourites (icon)</a>
+
             <a href="#">
-                Cart (icon)
+                Favourites
+            </a>
+
+            <a href="#">
+                Cart
                 <span class="badge">2</span>
             </a>
+
             <button>
                 <img src="#" alt="account-profile">
             </button>
+
         </div>
+
         } @else {
+
         <div class="actions">
-            <a href="#">Entrar</a>
+
+            <a href="#">
+                Entrar
+            </a>
 
             <div>|</div>
-            
+
             <a href="#">
-                Cart (icon)
+                Cart
                 <span class="badge">2</span>
             </a>
+
         </div>
+
         }
+
     </div>
+
 </header>

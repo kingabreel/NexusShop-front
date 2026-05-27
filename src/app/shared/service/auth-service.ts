@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginRequest, RegisterRequest } from '../interface/auth';
+import { AuthStore } from '../store/auth.store';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,59 @@ import { LoginRequest, RegisterRequest } from '../interface/auth';
 export class AuthService {
   protected endpoint: string = "auth";
   protected baseUrl: string = environment.apiUrl;
+  private authStore = inject(AuthStore);
 
   constructor(protected http: HttpClient) { }
 
-  login(data: LoginRequest): Observable<any> {
-    return this.http.post<LoginRequest>(`${this.baseUrl}/${this.endpoint}/login`, data);
-  }
-
   register(data: RegisterRequest): Observable<any> {
     return this.http.post<RegisterRequest>(`${this.baseUrl}/${this.endpoint}/register`, data);
+  }
+
+  login(data: LoginRequest): Observable<any> {
+
+    return this.http.post<any>(
+      `${this.baseUrl}/${this.endpoint}/login`,
+      data,
+      {
+        withCredentials: true
+      }
+    ).pipe(
+      tap(response => {
+        this.authStore.setToken(response.token);
+      })
+    );
+  }
+
+  refreshToken(): Observable<any> {
+
+    return this.http.post<any>(
+      `${this.baseUrl}/${this.endpoint}/refresh`,
+      {},
+      {
+        withCredentials: true
+      }
+    ).pipe(
+      tap(response => {
+        this.authStore.setToken(response.token);
+      })
+    );
+  }
+
+  getToken(): string | null {
+    return this.authStore.accessToken();
+  }
+
+  logout() {
+
+    this.authStore.logout();
+
+    return this.http.post(
+      `${this.baseUrl}/${this.endpoint}/logout`,
+      {},
+      {
+        withCredentials: true
+      }
+    );
   }
 
 }

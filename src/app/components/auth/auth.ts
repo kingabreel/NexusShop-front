@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AuthService } from '../../shared/service/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -31,11 +32,10 @@ export class Auth {
   registerForm: FormGroup;
   hidePassword: boolean = true;
 
-  token: string = '';
-
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
 
     this.loginForm = this.fb.group({
@@ -60,9 +60,8 @@ export class Auth {
     if (this.loginForm.invalid) return;
 
     this.authService.login(this.loginForm.value).subscribe({
-      next: (response) => {
-        console.log('Login successful:', response);
-        this.token = response.token;
+      next: () => {
+        this.router.navigate(['/']);
       },
       error: (error) => {
         console.error('Login failed:', error);
@@ -82,5 +81,4 @@ export class Auth {
       }
     });
   }
-
 }
