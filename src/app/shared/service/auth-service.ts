@@ -69,8 +69,12 @@ export class AuthService {
     );
   }
 
-  getGoogleProfile(): Observable<any> {
-    return this.googleApi.getGoogleUser();
+  startGoogleLogin() {
+    this.googleApi.initGoogleLogin();
+  }
+
+  handleGoogleCallback() {
+    return this.googleApi.handleGoogleCallback();
   }
 
   loginWithGoogle(token: string): Observable<any> {

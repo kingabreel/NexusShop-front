@@ -50,6 +50,14 @@ export class Auth {
       password: ['', Validators.required]
     });
 
+    this.authService.handleGoogleCallback()
+      .then((data: any) => {
+
+        console.log('Handling Google callback', data);
+        if (data?.idToken) {
+          this.loginWithGoogle(data.idToken);
+        }
+      });
   }
 
   toggleMode() {
@@ -57,21 +65,15 @@ export class Auth {
   }
 
   callGoogleApi() {
-    console.log('Calling Google API...');
-    this.authService.getGoogleProfile().subscribe({
-      next: (profile) => {
-        this.loginWithGoogle(profile.idToken);
-      },
-      error: (error) => {
-        console.error('Failed to get Google profile:', error);
-      }
-    });
+    this.authService.startGoogleLogin();
   }
 
   loginWithGoogle(token: string) {
     this.authService.loginWithGoogle(token).subscribe({
-      next: () => {
-        this.router.navigate(['/']);
+      next: (data: any) => {
+        console.log(token);
+        console.log('Google login successful');
+        console.log(data);
       },
       error: (error) => {
         console.error('Google login failed:', error);

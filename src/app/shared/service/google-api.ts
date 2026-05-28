@@ -9,19 +9,32 @@ export class GoogleApi {
 
   constructor(private oAuthService: OAuthService) { }
 
-  getGoogleUser(): any {
+  initGoogleLogin() {
+
     this.oAuthService.configure(authConfig);
-    this.oAuthService.loadDiscoveryDocument().then(() => {
-      this.oAuthService.tryLoginImplicitFlow().then(() => {
+
+    this.oAuthService.loadDiscoveryDocumentAndTryLogin()
+      .then(() => {
+
         if (!this.oAuthService.hasValidAccessToken()) {
-          this.oAuthService.initLoginFlow();
-        } else {
-          this.oAuthService.loadUserProfile().then(() => {
-            console.log('User profile:', JSON.stringify(this.oAuthService.getIdentityClaims()));
-            return this.oAuthService.getIdentityClaims();
-          });
+
+          this.oAuthService.initCodeFlow();
         }
       });
-    });
+  }
+
+  async handleGoogleCallback() {
+
+    this.oAuthService.configure(authConfig);
+
+    await this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    if (this.oAuthService.hasValidAccessToken()) {
+
+      return {
+        idToken: this.oAuthService.getIdToken(),
+        profile: this.oAuthService.getIdentityClaims()
+      };
+    }
+    return null;
   }
 }
