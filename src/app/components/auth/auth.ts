@@ -56,6 +56,29 @@ export class Auth {
     this.isLogin = !this.isLogin;
   }
 
+  callGoogleApi() {
+    console.log('Calling Google API...');
+    this.authService.getGoogleProfile().subscribe({
+      next: (profile) => {
+        this.loginWithGoogle(profile.idToken);
+      },
+      error: (error) => {
+        console.error('Failed to get Google profile:', error);
+      }
+    });
+  }
+
+  loginWithGoogle(token: string) {
+    this.authService.loginWithGoogle(token).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Google login failed:', error);
+      }
+    });
+  }
+
   submitLogin() {
     if (this.loginForm.invalid) return;
 
