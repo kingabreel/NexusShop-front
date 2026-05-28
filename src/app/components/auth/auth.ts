@@ -50,10 +50,35 @@ export class Auth {
       password: ['', Validators.required]
     });
 
+    this.authService.handleGoogleCallback()
+      .then((data: any) => {
+
+        console.log('Handling Google callback', data);
+        if (data?.idToken) {
+          this.loginWithGoogle(data.idToken);
+        }
+      });
   }
 
   toggleMode() {
     this.isLogin = !this.isLogin;
+  }
+
+  callGoogleApi() {
+    this.authService.startGoogleLogin();
+  }
+
+  loginWithGoogle(token: string) {
+    this.authService.loginWithGoogle(token).subscribe({
+      next: (data: any) => {
+        console.log(token);
+        console.log('Google login successful');
+        console.log(data);
+      },
+      error: (error) => {
+        console.error('Google login failed:', error);
+      }
+    });
   }
 
   submitLogin() {
