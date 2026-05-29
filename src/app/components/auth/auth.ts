@@ -9,6 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AuthService } from '../../shared/service/auth-service';
 import { Router } from '@angular/router';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auth',
@@ -32,10 +37,14 @@ export class Auth {
   registerForm: FormGroup;
   hidePassword: boolean = true;
 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
   ) {
 
     this.loginForm = this.fb.group({
@@ -70,10 +79,8 @@ export class Auth {
 
   loginWithGoogle(token: string) {
     this.authService.loginWithGoogle(token).subscribe({
-      next: (data: any) => {
-        console.log(token);
-        console.log('Google login successful');
-        console.log(data);
+      next: () => {
+
       },
       error: (error) => {
         console.error('Google login failed:', error);
@@ -89,7 +96,7 @@ export class Auth {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        console.error('Login failed:', error);
+        this.openSnackBar(this.getMessage(error));
       }
     });
   }
@@ -102,8 +109,35 @@ export class Auth {
         console.log('Registration successful:', response);
       },
       error: (error) => {
-        console.error('Registration failed:', error);
+        this.openSnackBar(this.getMessage(error));
       }
     });
+  }
+
+  openSnackBar(error: string) {
+    this._snackBar.open(error, 'X', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: 3 * 1000
+    });
+  }
+
+  // TODO: Put this into an helper / error handling service
+  getMessage(error: any): string {
+    if (error.status === 0) {
+      return 'Unable to connect to the server. Please check your internet connection.';
+    } else if (error.status >= 500) {
+      return 'Server error occurred. Please try again later.';
+    } else if (error.status === 401) {
+      return 'Invalid email or password. Please try again.';
+    } else if (error.error && error.error.message) {
+      return error.error.message;
+    } else {
+      return 'An unexpected error occurred. Please try again.';
+    }
+  }
+
+  toHome(): void {
+    this.router.navigate(['/']);
   }
 }
