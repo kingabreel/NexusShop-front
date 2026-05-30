@@ -5,6 +5,8 @@ import { Observable, tap } from 'rxjs';
 import { LoginRequest, RegisterRequest } from '../interface/auth';
 import { AuthStore } from '../store/auth.store';
 import { GoogleApi } from './google-api';
+import { User } from '../interface/user';
+import { ApiResponse } from '../interface/apiResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -88,6 +90,15 @@ export class AuthService {
       tap(response => {
         this.authStore.setToken(response.token);
       })
+    );
+  }
+
+  me(): Observable<ApiResponse<User>> {
+    return this.http.get<ApiResponse<User>>(
+      `${this.baseUrl}/${this.endpoint}/me`,
+      {
+        withCredentials: true
+      }
     );
   }
 }
