@@ -1,0 +1,117 @@
+<div class="profile-page">
+
+    <mat-card class="profile-header-card">
+
+        <div class="profile-header">
+
+            <div class="user-section">
+
+                <button mat-mini-fab disabled class="avatar-btn">
+                    {{ user.username.charAt(0) }}
+                </button>
+
+                <div class="user-details">
+                    <h1>{{ user.username }}</h1>
+                    <span>{{ user.email }}</span>
+                </div>
+
+            </div>
+
+            <button mat-flat-button color="primary">
+                <mat-icon>edit</mat-icon>
+                Editar Perfil
+            </button>
+
+        </div>
+
+    </mat-card>
+
+    <mat-card class="profile-card">
+
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon>person</mat-icon>
+                Informações Pessoais
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+
+            <div class="info-grid">
+
+                <div class="field">
+                    <label>Nome</label>
+                    <span>{{ user.username }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Email</label>
+                    <span>{{ user.email }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Celular</label>
+                    <span>{{ user.cellphone }}</span>
+                </div>
+
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+
+    <mat-card class="profile-card">
+
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon>home</mat-icon>
+                Endereço
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        @if (user.address) {
+        <mat-card-content>
+
+            <div class="info-grid">
+
+                <div class="field">
+                    <label>Rua</label>
+                    <span>{{ user.address.street }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Número</label>
+                    <span>{{ user.address.number }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Bairro</label>
+                    <span>{{ user.address.neighborhood }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Cidade</label>
+                    <span>{{ user.address.city }}</span>
+                </div>
+
+                <div class="field">
+                    <label>Estado</label>
+                    <span>{{ user.address.state }}</span>
+                </div>
+
+                <div class="field">
+                    <label>CEP</label>
+                    <span>{{ user.address.zipCode }}</span>
+                </div>
+
+            </div>
+
+        </mat-card-content>
+    }
+    </mat-card>
+
+</div>
