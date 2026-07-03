@@ -8,25 +8,20 @@
 
         <nav>
             <a href="#">Home</a>
-            <a href="#">Explore</a>
+            <a href="#">Shop & Dine</a>
         </nav>
 
         <div class="search-box">
             <input type="text" placeholder="Buscar produtos..." [(ngModel)]="searchText" (keyup.enter)="search()" />
-
-            <button (click)="search()">🔍</button>
+            <button (click)="search()"><mat-icon>search</mat-icon></button>
         </div>
 
         @if (authStore.isAuthenticated()) {
 
         <div class="actions">
-
+            <a href="#"><mat-icon>favorite</mat-icon></a>
             <a href="#">
-                Favourites
-            </a>
-
-            <a href="#">
-                Cart
+                <mat-icon>shopping_cart</mat-icon>
                 <span class="badge">2</span>
             </a>
 
@@ -39,15 +34,13 @@
         } @else {
 
         <div class="actions">
-
-            <a href="auth">
-                Entrar
-            </a>
+            <a href="auth">Login</a>
 
             <div>|</div>
 
             <a href="#">
-                Cart
+                <mat-icon>shopping_cart</mat-icon>
+                <span class="badge">2</span>
             </a>
 
         </div>

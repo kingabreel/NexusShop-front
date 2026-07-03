@@ -1,0 +1,67 @@
+<div class="rating-page">
+    <div class="title">
+        <mat-icon>arrow_back</mat-icon>
+        <h1>Evaluate product</h1>
+    </div>
+
+    <div class="container-rating">
+        @if (product) {
+        <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+        </div>
+        }
+
+        <div class="product-quality">
+            <h3>Product quality</h3>
+        </div>
+
+        <div class="stars">
+            @for (star of stars; track star) {
+            @if (getStarType(star) === 'full') {
+            <mat-icon class="filled" (click)="setRating(star, $event)">star</mat-icon>
+            } @else if (getStarType(star) === 'half') {
+            <mat-icon class="filled" (click)="setRating(star, $event)">star_half</mat-icon>
+            } @else {
+            <mat-icon (click)="setRating(star, $event)">star_border</mat-icon>
+            }
+            }
+        </div>
+        <p>{{ rating }} of 5 - {{ ratingLabel }}</p>
+
+        <hr>
+
+        <div class="opinion">
+            <h3>Share your opinion about the product</h3>
+            <textarea placeholder="What did you think about the quality, delivery, and service?"
+                [(ngModel)]="comment"> </textarea>
+        </div>
+        <hr>
+
+        <div class="photo">
+            <h3>Add photo (optional)</h3>
+            <div class="photo-upload-box" (click)="fileInput.click()">
+                @if (imageBase64) {
+                    <img [src]="imageBase64"/>
+                } @else {
+                    <mat-icon>photo_camera</mat-icon>
+                }
+            </div>
+            <input #fileInput type="file" accept="image/*" style="display: none;" (change)="onFileSelected($event)">
+        </div>
+        <hr>
+
+        <div class="avaliaton-anonymous">
+            <div>
+                <h3>Anonymous review</h3>
+                <h4>Your name will not be displayed publicly.</h4>
+            </div>
+            <input type="checkbox" [(ngModel)]="isAnonymous">
+        </div>
+
+        <div class="btn-send">
+            <button (click)="submitReview()">Send review</button>
+        </div>
+    </div>
+
+</div>

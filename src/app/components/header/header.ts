@@ -1,16 +1,17 @@
 import { Component, inject } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { AuthStore } from '../../shared/store/auth.store';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/service/search-event-service';
-
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, FormsModule],
+  imports: [MatIconModule, CommonModule, FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
+
 export class Header {
   authStore = inject(AuthStore);
 
