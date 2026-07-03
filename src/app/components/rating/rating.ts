@@ -61,7 +61,6 @@ export class Rating implements OnInit {
   }
 
   onFileSelected(event: Event) {
-    console.log('arquivo selecionado', event);
     const input = event.target as HTMLInputElement;
 
     if (input.files && input.files.length > 0) {
@@ -80,7 +79,6 @@ export class Rating implements OnInit {
 
   ngOnInit() {
     const productId = this.route.snapshot.paramMap.get('productId');
-    console.log(this.product);
     if (productId) {
       this.productService.getById(productId).subscribe({
         next: (response) => {
@@ -95,8 +93,6 @@ export class Rating implements OnInit {
   }
 
   submitReview() {
-    console.log('submitReview foi chamado!');
-
     const novoRating: RatingDto = {
       productId: this.product!.id,
       rating: this.rating,
