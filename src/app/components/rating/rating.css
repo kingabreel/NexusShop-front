@@ -1,0 +1,176 @@
+.rating-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.container-rating {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.container-rating hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 1.25rem 0;
+}
+
+h3 {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-size: 12px;
+  color: #999999;
+  font-weight: 400;
+  margin: 0;
+}
+
+p {
+  font-size: 13px;
+  color: #777777;
+  margin-top: 4px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 8px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.stars mat-icon {
+  cursor: pointer;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+  color: #cccccc;
+}
+
+.stars mat-icon.filled {
+  color: #f3ea6c;
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+}
+
+.photo-upload-box {
+  border: 1px dashed #cccccc;
+  border-radius: 8px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.photo-upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avaliaton-anonymous {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avaliaton-anonymous input[type="checkbox"] {
+  appearance: none;
+  width: 40px;
+  height: 22px;
+  background: #cccccc;
+  border-radius: 22px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.avaliaton-anonymous input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s;
+}
+
+.avaliaton-anonymous input[type="checkbox"]:checked {
+  background: #38dafa;
+}
+
+.avaliaton-anonymous input[type="checkbox"]:checked::before {
+  left: 21px;
+}
+
+.btn-send button {
+  width: 100%;
+  background: #38dafa;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.btn-send button:hover {
+  background: #27c9ef;
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+  resize: none;
+  padding: 10px;
+}
+
+@media (max-width: 480px) {
+  .rating-page {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.product-info h3 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #111111;
+  margin: 0;
+}
+
+.product-info p {
+  font-size: 13px;
+  color: #777777;
+  margin: 4px 0 0;
+}
+
+.rating-page {
+  zoom: 1.2;
+}
