@@ -7,6 +7,7 @@ export interface Product {
   category: string;
   isHighlighted: boolean;
   originalPrice?: number;
-  rating?: number;
+  averageRating?: number;
+  ratingCount?: number;
   imgUrl?: string;
 }

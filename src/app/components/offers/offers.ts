@@ -14,19 +14,21 @@ import { CommonModule } from '@angular/common';
 export class Offers implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private productService: ProductService,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
-  this.productService.getAll({ tag: 'highlight' }).subscribe(response => {
-    this.products = response.data.content.map((p: any) => ({
-      ...p,
-      tags: [p.category],
-      originalPrice: parseFloat((p.price * 1.2).toFixed(2)), 
-      rating: 4.5,
-      imgUrl: null
-    }));
+    this.productService.getHighlighted().subscribe((response) => {
+      this.products = response.data.content.map((p: any) => ({
+        ...p,
+        tags: [p.category],
+        originalPrice: parseFloat((p.price * 1.2).toFixed(2)),
+        imgUrl: null,
+      }));
 
-    this.cdr.detectChanges();
-  });
-}
+      this.cdr.detectChanges();
+    });
+  }
 }
