@@ -1,0 +1,79 @@
+<div class="chat-container" [class.open]="isOpen">
+
+    <div class="chat-header">
+        <div class="header-info">
+            <div class="avatar">
+                🤖
+            </div>
+
+            <div>
+                <h3>Assistente</h3>
+                <span>Online</span>
+            </div>
+        </div>
+
+        <button class="close-btn" (click)="close()">
+            ✕
+        </button>
+    </div>
+
+<div class="chat-body">
+
+  @for (message of messages; track $index) {
+
+    <div class="message" [class.bot]="message.sender === 'bot'"
+                         [class.user]="message.sender === 'user'">
+
+      <div class="bubble">
+
+        {{ message.text }}
+
+        @if(message.options?.length){
+
+          <div class="options">
+
+            @for(option of message.options; track option.id){
+
+              <button
+                class="option-button"
+                (click)="selectOption(option)">
+
+                {{ option.label }}
+
+              </button> 
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  }
+
+</div>
+
+
+    <div class="chat-footer">
+
+    <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        [disabled]="isInputBlocked"
+        placeholder="Digite sua mensagem..."
+        (keyup.enter)="search()">
+
+    <button
+        class="send-btn"
+        [disabled]="isInputBlocked || !searchTerm.trim()"
+        (click)="search()">
+
+        ➤
+
+    </button>
+    </div>
+
+</div>
