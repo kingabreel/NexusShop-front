@@ -7,6 +7,7 @@ import {
 import { inject } from '@angular/core';
 import {
     catchError,
+    retry,
     switchMap,
     throwError
 } from 'rxjs';
@@ -22,33 +23,23 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
     }
 
     return next(req).pipe(
-
-        catchError((error:
-            HttpErrorResponse) => {
-
-            if (error.status === 401) {
-
-                return authService
-                    .refreshToken()
-                    .pipe(
-
+        retry({
+            count: 5, 
+            delay: (error: HttpErrorResponse) => {
+                if (error.status === 401) {
+                    return authService.refreshToken().pipe(
                         switchMap(() => {
-
                             const newToken = authService.getToken();
-
-                            const retryReq =
-                                req.clone({
-                                    setHeaders: { Authorization: `Bearer ${newToken}` }
-                                });
-
-                            return next(retryReq);
+                            req = req.clone({
+                                setHeaders: { Authorization: `Bearer ${newToken}` }
+                            });
+                            return next(req);
                         })
                     );
+                }
+                
+                return throwError(() => error);
             }
-
-            return throwError(
-                () => error
-            );
         })
     );
 };

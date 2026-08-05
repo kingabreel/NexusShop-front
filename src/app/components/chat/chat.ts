@@ -76,22 +76,20 @@ export class Chat implements OnInit {
       text: this.searchTerm
     });
 
-    this.messages.push({
-      sender: 'bot',
-      text: `Você pesquisou por "${this.searchTerm}" na categoria "${this.selectedOption?.label}".`
-    });
-
     const requestDto: ChatbotRequestDto = {
       option: this.selectedOption as ChatbotOptions,
       subOption: this.selectedSubOption as ChatbotOptions,
       messageText: this.searchTerm
     }
 
+    //TODO: Add spinner or 'writing' status while the bot retrieves the response
+
     this.chatbotService.sendMessage(requestDto).subscribe(response => {
-      console.log('Response from chatbot service:', response);
+      const data = response.data as any;
+
       this.messages.push({
         sender: 'bot',
-        text: response.data as unknown as string
+        text: `${data.products[0]?.name}, ${data.products[0]?.description}, Price: ${data.products[0]?.price}`
       });
       this.cdr.detectChanges();
     });
