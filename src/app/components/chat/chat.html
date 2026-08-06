@@ -7,7 +7,7 @@
             </div>
 
             <div>
-                <h3>Assistente</h3>
+                <h3>Assistant</h3>
                 <span>Online</span>
             </div>
         </div>
@@ -17,7 +17,7 @@
         </button>
     </div>
 
-<div class="chat-body">
+<div class="chat-body" #chatBody>
 
   @for (message of messages; track $index) {
 
@@ -54,6 +54,24 @@
 
   }
 
+  @if (isWriting) {
+
+    <div class="message bot">
+
+      <div class="bubble">
+
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+    </div>
+
+  }
+
 </div>
 
 
@@ -62,13 +80,13 @@
     <input
         type="text"
         [(ngModel)]="searchTerm"
-        [disabled]="isInputBlocked"
-        placeholder="Digite sua mensagem..."
+        [disabled]="isInputBlocked || isWriting"
+        placeholder="Type your message..."
         (keyup.enter)="search()">
 
     <button
         class="send-btn"
-        [disabled]="isInputBlocked || !searchTerm.trim()"
+        [disabled]="isInputBlocked || isWriting || !searchTerm.trim()"
         (click)="search()">
 
         ➤

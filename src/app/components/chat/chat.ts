@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { ChatbotService } from '../../shared/service/chatbot-service';
 import { ChatbotOptions, ChatbotRequestDto, ChatMessage } from '../../shared/interface/chatbot';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { finalize, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat',
@@ -10,11 +11,14 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './chat.html',
   styleUrl: './chat.css',
 })
-export class Chat implements OnInit {
+export class Chat implements OnInit, AfterViewChecked {
   @Input()
   isOpen = false;
 
+  @ViewChild('chatBody', { static: false }) chatBody!: ElementRef;
+
   isInputBlocked: boolean = true;
+  isWriting: boolean = false;
 
   messages: ChatMessage[] = [];
   chatOptions: ChatbotOptions[] = [];
@@ -22,6 +26,8 @@ export class Chat implements OnInit {
   selectedOption?: ChatbotOptions;
   selectedSubOption?: ChatbotOptions;
   searchTerm = '';
+
+  private ngAfterViewCheckedCalled = false;
 
   constructor(private chatbotService: ChatbotService, private cdr: ChangeDetectorRef) { }
 
@@ -33,12 +39,20 @@ export class Chat implements OnInit {
 
       this.messages.push({
         sender: 'bot',
-        text: 'Olá! Eu sou o assistente virtual da NexusShop. Como posso ajudá-lo hoje? Escolha uma das opções abaixo:',
+        text: 'Hello! I am the NexusShop virtual assistant. How can I help you today? Choose one of the options below:',
         options: this.chatOptions
       });
       this.cdr.detectChanges();
+      this.scrollToBottom();
 
     });
+  }
+
+  ngAfterViewChecked() {
+    if (this.ngAfterViewCheckedCalled) {
+      this.scrollToBottom();
+    }
+    this.ngAfterViewCheckedCalled = true;
   }
 
   selectOption(option: ChatbotOptions) {
@@ -48,26 +62,30 @@ export class Chat implements OnInit {
       text: option.label
     });
 
+    this.scrollToBottom();
+
     if (!option.children || option.children.length === 0) {
       this.messages.push({
         sender: 'bot',
-        text: 'Por favor, digite o item que você deseja pesquisar.'
+        text: 'Please type the item you want to search for.'
       });
       this.isInputBlocked = false;
       this.selectedSubOption = option;
 
       this.cdr.detectChanges();
+      this.scrollToBottom();
       return;
     }
 
     this.messages.push({
       sender: 'bot',
-      text: 'Perfeito! Agora escolha uma das opções abaixo:',
+      text: 'Great! Now choose one of the options below:',
       options: option.children
     });
     this.selectedOption = option;
 
     this.cdr.detectChanges();
+    this.scrollToBottom();
   }
 
   search() {
@@ -76,15 +94,23 @@ export class Chat implements OnInit {
       text: this.searchTerm
     });
 
+    this.scrollToBottom();
+
     const requestDto: ChatbotRequestDto = {
       option: this.selectedOption as ChatbotOptions,
       subOption: this.selectedSubOption as ChatbotOptions,
       messageText: this.searchTerm
     }
 
-    //TODO: Add spinner or 'writing' status while the bot retrieves the response
+    this.isWriting = true;
 
-    this.chatbotService.sendMessage(requestDto).subscribe(response => {
+    this.chatbotService.sendMessage(requestDto).pipe(
+      delay(1000),
+      finalize(() => {
+        this.isWriting = false;
+        this.cdr.detectChanges();
+      })
+    ).subscribe(response => {
       const data = response.data as any;
 
       this.messages.push({
@@ -92,6 +118,7 @@ export class Chat implements OnInit {
         text: `${data.products[0]?.name}, ${data.products[0]?.description}, Price: ${data.products[0]?.price}`
       });
       this.cdr.detectChanges();
+      this.scrollToBottom();
     });
 
     this.searchTerm = '';
@@ -105,7 +132,6 @@ export class Chat implements OnInit {
     let message: string = '';
     let index: number = 1;
 
-    console.log()
     for (const option of this.chatOptions) {
       message += `${index}- ${option.label}\n`;
       index++;
@@ -116,5 +142,12 @@ export class Chat implements OnInit {
 
   close() {
     this.isOpen = false;
+  }
+
+  private scrollToBottom(): void {
+    if (this.chatBody?.nativeElement) {
+      const el = this.chatBody.nativeElement;
+      el.scrollTop = el.scrollHeight;
+    }
   }
 }
