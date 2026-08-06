@@ -31,7 +31,7 @@ export class AuthService {
       `${this.baseUrl}/${this.endpoint}/login`,
       data,
       {
-        withCredentials: true
+        withCredentials: false
       }
     ).pipe(
       tap(response => {

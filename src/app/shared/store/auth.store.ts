@@ -13,9 +13,19 @@ type AuthState = {
     loggedIn: boolean;
 };
 
+const TOKEN_KEY = 'nexusshop_access_token';
+
+const getStoredToken = (): string | null => {
+    try {
+        return localStorage.getItem(TOKEN_KEY);
+    } catch {
+        return null;
+    }
+};
+
 const initialState: AuthState = {
-    accessToken: null,
-    loggedIn: false
+    accessToken: getStoredToken(),
+    loggedIn: !!getStoredToken()
 };
 
 export const AuthStore = signalStore(
@@ -33,6 +43,7 @@ export const AuthStore = signalStore(
                 accessToken: token,
                 loggedIn: true
             });
+            localStorage.setItem(TOKEN_KEY, token);
         },
 
         logout() {
@@ -40,6 +51,7 @@ export const AuthStore = signalStore(
                 accessToken: null,
                 loggedIn: false
             });
+            localStorage.removeItem(TOKEN_KEY);
         }
     }))
 );

@@ -53,7 +53,7 @@ export class Auth {
     });
 
     this.registerForm = this.fb.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       cellphone: [''],
       password: ['', Validators.required]
