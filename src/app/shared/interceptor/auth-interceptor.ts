@@ -5,41 +5,47 @@ import {
     HttpRequest
 } from '@angular/common/http';
 import { inject } from '@angular/core';
-import {
-    catchError,
-    retry,
-    switchMap,
-    throwError
-} from 'rxjs';
+import { catchError, switchMap, throwError } from 'rxjs';
 
 import { AuthService } from '../service/auth-service';
+import { AuthStore } from '../store/auth.store';
 
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
     const authService = inject(AuthService);
-    const token = authService.getToken();
+    const authStore = inject(AuthStore);
 
-    if (token) {
-        req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
+    const isAuthEndpoint = req.url.includes('/auth/');
+
+    let authReq = req;
+    if (!isAuthEndpoint) {
+        const token = authService.getToken();
+        if (token) {
+            authReq = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
+        }
     }
 
-    return next(req).pipe(
-        retry({
-            count: 5, 
-            delay: (error: HttpErrorResponse) => {
-                if (error.status === 401) {
-                    return authService.refreshToken().pipe(
-                        switchMap(() => {
-                            const newToken = authService.getToken();
-                            req = req.clone({
+    return next(authReq).pipe(
+        catchError((error: HttpErrorResponse) => {
+            if (error.status === 401 && !isAuthEndpoint) {
+                return authService.refreshToken().pipe(
+                    switchMap(() => {
+                        const newToken = authService.getToken();
+                        if (newToken) {
+                            const clonedReq = req.clone({
                                 setHeaders: { Authorization: `Bearer ${newToken}` }
                             });
-                            return next(req);
-                        })
-                    );
-                }
-                
-                return throwError(() => error);
+                            return next(clonedReq);
+                        }
+                        return throwError(() => error);
+                    }),
+                    catchError((refreshError: HttpErrorResponse) => {
+                        authStore.logout();
+                        return throwError(() => error);
+                    })
+                );
             }
+
+            return throwError(() => error);
         })
     );
 };
