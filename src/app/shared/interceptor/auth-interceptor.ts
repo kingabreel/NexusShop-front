@@ -14,7 +14,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
     const authService = inject(AuthService);
     const authStore = inject(AuthStore);
 
-    const isAuthEndpoint = req.url.includes('/auth/');
+    const isAuthEndpoint = req.url.includes('/auth/') && !req.url.includes('/auth/me');
 
     let authReq = req;
     if (!isAuthEndpoint) {

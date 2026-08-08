@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Cadastrar Loja</h2>
+
+<mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nome da Loja</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Categorias</mat-label>
+            <mat-select formControlName="tags" multiple>
+                @for (cat of categories; track cat.value) {
+                    <mat-option [value]="cat.value">{{ cat.label }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+    <button mat-flat-button color="primary" type="button" (click)="onSubmit()" [disabled]="form.invalid">
+        Cadastrar
+    </button>
+</mat-dialog-actions>
