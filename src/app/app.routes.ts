@@ -5,6 +5,7 @@ export const routes: Routes = [
     { path: 'search', loadComponent: () => import('./pages/search/search-page').then(m => m.SearchPage) },
     { path: 'auth', loadComponent: () => import('./components/auth/auth').then(m => m.Auth) },
     { path: 'profile', loadComponent: () => import('./pages/profile/profile').then(m => m.Profile) },
+    { path: 'cart', loadComponent: () => import('./pages/cart/cart').then(m => m.Cart) },
     { path: 'rating/:productId', loadComponent: () => import('./components/rating/rating').then(m => m.Rating) },
     { path: '**', redirectTo: '' },
 ];

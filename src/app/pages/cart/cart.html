@@ -1,0 +1,111 @@
+<div class="cart-page">
+
+    <div class="cart-header">
+        <h1>Shopping Cart</h1>
+    </div>
+
+    @if (loading) {
+    <div class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+    </div>
+    } @else if (errorMessage) {
+    <div class="error-message">
+        <mat-icon>error_outline</mat-icon>
+        <span>{{ errorMessage }}</span>
+        <button mat-stroked-button color="primary" (click)="loadCart()">Retry</button>
+    </div>
+    } @else if (cart && cart.items.length > 0) {
+
+    <div class="cart-content">
+
+        <div class="cart-items">
+            @for (item of cart.items; track item.productId) {
+            <mat-card class="cart-item-card">
+                <div class="cart-item">
+                    <div class="item-info">
+                        <div class="item-name">{{ item.productName }}</div>
+                        <div class="item-price">${{ item.priceAtTime | number:'1.2-2' }}</div>
+                    </div>
+
+                    <div class="item-quantity">
+                        <button mat-icon-button (click)="updateQuantity(item, item.quantity - 1)" [disabled]="item.quantity <= 1">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                        <span class="quantity-value">{{ item.quantity }}</span>
+                        <button mat-icon-button (click)="updateQuantity(item, item.quantity + 1)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+
+                    <div class="item-total">
+                        ${{ item.total | number:'1.2-2' }}
+                    </div>
+
+                    <button mat-icon-button color="warn" class="remove-btn" (click)="removeItem(item)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+            }
+        </div>
+
+        <div class="cart-summary">
+            <mat-card class="summary-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <mat-icon>receipt</mat-icon>
+                        Order Summary
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-content>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>${{ cart.subtotal | number:'1.2-2' }}</span>
+                    </div>
+
+                    @if (cart.discount > 0) {
+                    <div class="summary-row discount">
+                        <span>Discount</span>
+                        <span>-${{ cart.discount | number:'1.2-2' }}</span>
+                    </div>
+                    }
+
+                    <mat-divider></mat-divider>
+
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>${{ cart.total | number:'1.2-2' }}</span>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-flat-button color="primary" class="checkout-btn">
+                        <mat-icon>shopping_bag</mat-icon>
+                        Checkout
+                    </button>
+                    <button mat-stroked-button color="warn" (click)="clearCart()">
+                        <mat-icon>delete_outline</mat-icon>
+                        Clear Cart
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+    </div>
+
+    } @else {
+    <div class="empty-cart">
+        <mat-icon>shopping_cart</mat-icon>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any items to your cart yet.</p>
+        <a mat-flat-button color="primary" href="/">
+            <mat-icon>arrow_back</mat-icon>
+            Continue Shopping
+        </a>
+    </div>
+    }
+
+</div>
