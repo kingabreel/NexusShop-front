@@ -2,7 +2,7 @@
     display: flex;
     gap: 24px;
     padding: 24px;
-    background: #f5f5f5;
+    background: var(--nx-bg-secondary);
     min-height: 100vh;
 }
 
@@ -21,10 +21,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    background: var(--nx-bg-card);
     padding: 18px 22px;
     border-radius: 16px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--nx-border-color);
 }
 
 .results-info {
@@ -39,7 +39,7 @@
 }
 
 .results-info span {
-    color: #777;
+    color: var(--nx-text-tertiary);
     font-size: 14px;
 }
 
@@ -52,10 +52,11 @@
 .sort-container select {
     height: 42px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--nx-border-input);
     padding: 0 14px;
-    background: white;
+    background: var(--nx-bg-input);
     cursor: pointer;
+    color: var(--nx-text-primary);
 }
 
 .products-grid {
@@ -77,8 +78,8 @@
     padding: 0 20px;
     border: none;
     border-radius: 10px;
-    background: #111827;
-    color: white;
+    background: var(--nx-gray-900);
+    color: var(--nx-text-inverse);
     cursor: pointer;
 }
 

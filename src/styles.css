@@ -9,3 +9,173 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+:root {
+  --nx-bg-primary: #ffffff;
+  --nx-bg-secondary: #f5f5f5;
+  --nx-bg-tertiary: #fafafa;
+  --nx-bg-card: #ffffff;
+  --nx-bg-input: #ffffff;
+
+  --nx-text-primary: #111111;
+  --nx-text-secondary: #555555;
+  --nx-text-tertiary: #777777;
+  --nx-text-muted: #999999;
+  --nx-text-inverse: #ffffff;
+
+  --nx-border-color: #e8e8e8;
+  --nx-border-light: #e5e5e5;
+  --nx-border-input: #ccc;
+  --nx-divider: #e5e5e5;
+
+  --nx-accent: #38dafa;
+  --nx-accent-hover: #60cde0;
+  --nx-accent-light: #e4f7fa;
+  --nx-accent-blue: #1976d2;
+
+  --nx-shadow: rgba(0, 0, 0, 0.08);
+  --nx-shadow-strong: rgba(0, 0, 0, 0.18);
+  --nx-badge-bg: yellow;
+  --nx-badge-text: #000000;
+
+  --nx-card-blue-bg: #eaf6fd;
+  --nx-card-orange-bg: #fdf3ea;
+
+  --nx-overlay-light: rgba(255, 255, 255, 0.2);
+  --nx-overlay-dark: rgba(0, 0, 0, 0.15);
+
+  --nx-gradient-start: #00c6ff;
+  --nx-gradient-end: #7b2ff7;
+
+  --nx-star-filled: #f3ea6c;
+  --nx-star-empty: #cccccc;
+
+  --nx-success-bg: #d1fae5;
+  --nx-success-text: #065f46;
+  --nx-info-bg: #e0e7ff;
+  --nx-info-text: #3730a3;
+
+  --nx-danger: #dc2626;
+  --nx-danger-light: #fee2e2;
+  --nx-gray-200: #e5e7eb;
+  --nx-gray-300: #d1d5db;
+  --nx-gray-400: #9ca3af;
+  --nx-gray-500: #6b7280;
+  --nx-gray-600: #4b5563;
+  --nx-gray-700: #374151;
+  --nx-gray-800: #1f2937;
+  --nx-gray-900: #111827;
+  --nx-purple: #6366f1;
+  --nx-purple-light: #8b5cf6;
+  --nx-orange: #ff9800;
+  --nx-divider-dark: rgba(0, 0, 0, 0.30);
+  --nx-checked: #38dafa;
+  --nx-input-bg: #f9f9f9;
+  --nx-tag-bg: #fafafa;
+  --nx-tag-border: #e2e2e2;
+  --nx-tag-hover-bg: #dff8ff;
+  --nx-tag-hover-border: #5fdfff;
+  --nx-tag-hover-text: #00b7e6;
+  --nx-filter-header: #2f2f2f;
+  --nx-filter-sub: #8a8a8a;
+  --nx-filter-range: #8b8b8b;
+  --nx-filter-text: #6c6c6c;
+  --nx-filter-hover: #00cfff;
+  --nx-chat-bg: #f4f7fb;
+  --nx-chat-border: #eee;
+  --nx-chat-input-border: #ddd;
+  --nx-google-bg: #ffffff;
+  --nx-google-border: #dadce0;
+  --nx-google-text: #3c4043;
+  --nx-google-hover: #f8f9fa;
+  --nx-google-shadow: rgba(0, 0, 0, 0.12);
+  --nx-auth-left-bg: #f8fafc;
+  --nx-auth-right-bg-start: #111827;
+  --nx-auth-right-bg-end: #0f172a;
+  --nx-auth-card-shadow: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --nx-bg-primary: #0f172a;
+  --nx-bg-secondary: #1e293b;
+  --nx-bg-tertiary: #334155;
+  --nx-bg-card: #1e293b;
+  --nx-bg-input: #1e293b;
+
+  --nx-text-primary: #f1f5f9;
+  --nx-text-secondary: #cbd5e1;
+  --nx-text-tertiary: #94a3b8;
+  --nx-text-muted: #64748b;
+  --nx-text-inverse: #0f172a;
+
+  --nx-border-color: #334155;
+  --nx-border-light: #475569;
+  --nx-border-input: #475569;
+  --nx-divider: #475569;
+
+  --nx-accent: #38dafa;
+  --nx-accent-hover: #60cde0;
+  --nx-accent-light: #1e293b;
+  --nx-accent-blue: #60a5fa;
+
+  --nx-shadow: rgba(0, 0, 0, 0.3);
+  --nx-shadow-strong: rgba(0, 0, 0, 0.5);
+  --nx-badge-bg: #facc15;
+  --nx-badge-text: #0f172a;
+
+  --nx-card-blue-bg: #1e293b;
+  --nx-card-orange-bg: #292524;
+
+  --nx-overlay-light: rgba(255, 255, 255, 0.08);
+  --nx-overlay-dark: rgba(0, 0, 0, 0.3);
+
+  --nx-gradient-start: #0ea5e9;
+  --nx-gradient-end: #6366f1;
+
+  --nx-star-filled: #facc15;
+  --nx-star-empty: #475569;
+
+  --nx-success-bg: #064e3b;
+  --nx-success-text: #6ee7b7;
+  --nx-info-bg: #1e1b4b;
+  --nx-info-text: #a5b4fc;
+
+  --nx-danger: #f87171;
+  --nx-danger-light: #7f1d1d;
+  --nx-gray-200: #334155;
+  --nx-gray-300: #475569;
+  --nx-gray-400: #64748b;
+  --nx-gray-500: #94a3b8;
+  --nx-gray-600: #cbd5e1;
+  --nx-gray-700: #e2e8f0;
+  --nx-gray-800: #f1f5f9;
+  --nx-gray-900: #f8fafc;
+  --nx-purple: #818cf8;
+  --nx-purple-light: #a78bfa;
+  --nx-orange: #fb923c;
+  --nx-divider-dark: rgba(255, 255, 255, 0.15);
+  --nx-checked: #38dafa;
+  --nx-input-bg: #1e293b;
+  --nx-tag-bg: #334155;
+  --nx-tag-border: #475569;
+  --nx-tag-hover-bg: #1e293b;
+  --nx-tag-hover-border: #5fdfff;
+  --nx-tag-hover-text: #00b7e6;
+  --nx-filter-header: #f1f5f9;
+  --nx-filter-sub: #94a3b8;
+  --nx-filter-range: #94a3b8;
+  --nx-filter-text: #cbd5e1;
+  --nx-filter-hover: #38dafa;
+  --nx-chat-bg: #1e293b;
+  --nx-chat-border: #334155;
+  --nx-chat-input-border: #475569;
+  --nx-google-bg: #1e293b;
+  --nx-google-border: #475569;
+  --nx-google-text: #e2e8f0;
+  --nx-google-hover: #334155;
+  --nx-google-shadow: rgba(0, 0, 0, 0.3);
+  --nx-auth-left-bg: #0f172a;
+  --nx-auth-right-bg-start: #000000;
+  --nx-auth-right-bg-end: #0f172a;
+  --nx-auth-card-shadow: rgba(0, 0, 0, 0.3);
+}

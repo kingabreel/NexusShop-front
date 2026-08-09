@@ -6,11 +6,11 @@
     width: 380px;
     height: 520px;
 
-    background: #fff;
+    background: var(--nx-bg-card);
     border-radius: 18px;
 
     box-shadow:
-        0 12px 40px rgba(0, 0, 0, .18);
+        0 12px 40px var(--nx-shadow-strong);
 
     display: flex;
     flex-direction: column;
@@ -36,8 +36,8 @@
 .chat-header {
     height: 72px;
 
-    background: #1976d2;
-    color: white;
+    background: var(--nx-accent-blue);
+    color: var(--nx-text-inverse);
 
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .18);
+    background: var(--nx-overlay-light);
 
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@
 .close-btn {
     border: none;
     background: transparent;
-    color: white;
+    color: var(--nx-text-inverse);
 
     cursor: pointer;
 
@@ -92,7 +92,7 @@
 
     padding: 18px;
 
-    background: #f4f7fb;
+    background: var(--nx-chat-bg);
 
     overflow-y: auto;
 
@@ -126,12 +126,12 @@
 }
 
 .bot .bubble {
-    background: white;
+    background: var(--nx-bg-card);
 }
 
 .user .bubble {
-    background: #1976d2;
-    color: white;
+    background: var(--nx-accent-blue);
+    color: var(--nx-text-inverse);
 }
 
 .chat-footer {
@@ -139,18 +139,18 @@
 
     padding: 12px;
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--nx-chat-border);
 
     display: flex;
     gap: 10px;
 
-    background: white;
+    background: var(--nx-bg-card);
 }
 
 .chat-footer input {
     flex: 1;
 
-    border: 1px solid #ddd;
+    border: 1px solid var(--nx-chat-input-border);
 
     border-radius: 24px;
 
@@ -159,6 +159,9 @@
     outline: none;
 
     font-size: 14px;
+
+    background: var(--nx-bg-input);
+    color: var(--nx-text-primary);
 }
 
 .send-btn {
@@ -169,9 +172,9 @@
 
     border: none;
 
-    background: #1976d2;
+    background: var(--nx-accent-blue);
 
-    color: white;
+    color: var(--nx-text-inverse);
 
     cursor: pointer;
 
@@ -208,11 +211,11 @@
 
     border-radius: 12px;
 
-    border: 1px solid #1976d2;
+    border: 1px solid var(--nx-accent-blue);
 
-    background: white;
+    background: var(--nx-bg-card);
 
-    color: #1976d2;
+    color: var(--nx-accent-blue);
 
     text-align: left;
 
@@ -222,8 +225,8 @@
 
     &:hover {
 
-        background: #1976d2;
-        color: white;
+        background: var(--nx-accent-blue);
+        color: var(--nx-text-inverse);
 
     }
 
@@ -239,7 +242,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #888;
+    background: var(--nx-text-tertiary);
     animation: bounce 1.4s ease-in-out infinite both;
 }
 

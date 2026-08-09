@@ -5,34 +5,34 @@
 }
 
 .container-rating {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--nx-bg-card);
+  border: 1px solid var(--nx-border-light);
   border-radius: 12px;
   padding: 1.5rem;
 }
 
 .container-rating hr {
   border: none;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--nx-border-light);
   margin: 1.25rem 0;
 }
 
 h3 {
   font-size: 14px;
-  color: #555555;
+  color: var(--nx-text-secondary);
   margin-bottom: 8px;
 }
 
 h4 {
   font-size: 12px;
-  color: #999999;
+  color: var(--nx-text-muted);
   font-weight: 400;
   margin: 0;
 }
 
 p {
   font-size: 13px;
-  color: #777777;
+  color: var(--nx-text-tertiary);
   margin-top: 4px;
 }
 
@@ -53,20 +53,25 @@ p {
   font-size: 28px;
   width: 28px;
   height: 28px;
-  color: #cccccc;
+  color: var(--nx-star-empty);
 }
 
 .stars mat-icon.filled {
-  color: #f3ea6c;
+  color: var(--nx-star-filled);
 }
 
 textarea {
   width: 100%;
   height: 90px;
+  background: var(--nx-bg-input);
+  color: var(--nx-text-primary);
+  border: 1px solid var(--nx-border-input);
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .photo-upload-box {
-  border: 1px dashed #cccccc;
+  border: 1px dashed var(--nx-border-input);
   border-radius: 8px;
   width: 64px;
   height: 64px;
@@ -92,7 +97,7 @@ textarea {
   appearance: none;
   width: 40px;
   height: 22px;
-  background: #cccccc;
+  background: var(--nx-star-empty);
   border-radius: 22px;
   position: relative;
   cursor: pointer;
@@ -104,7 +109,7 @@ textarea {
   position: absolute;
   width: 16px;
   height: 16px;
-  background: white;
+  background: var(--nx-bg-card);
   border-radius: 50%;
   top: 3px;
   left: 3px;
@@ -112,7 +117,7 @@ textarea {
 }
 
 .avaliaton-anonymous input[type="checkbox"]:checked {
-  background: #38dafa;
+  background: var(--nx-checked);
 }
 
 .avaliaton-anonymous input[type="checkbox"]:checked::before {
@@ -121,8 +126,8 @@ textarea {
 
 .btn-send button {
   width: 100%;
-  background: #38dafa;
-  color: white;
+  background: var(--nx-accent);
+  color: var(--nx-text-inverse);
   border: none;
   padding: 14px;
   border-radius: 8px;
@@ -133,14 +138,7 @@ textarea {
 }
 
 .btn-send button:hover {
-  background: #27c9ef;
-}
-
-textarea {
-  width: 100%;
-  height: 90px;
-  resize: none;
-  padding: 10px;
+  background: var(--nx-accent-hover);
 }
 
 @media (max-width: 480px) {
@@ -155,19 +153,19 @@ textarea {
   gap: 12px;
   padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--nx-border-light);
 }
 
 .product-info h3 {
   font-size: 15px;
   font-weight: bold;
-  color: #111111;
+  color: var(--nx-text-primary);
   margin: 0;
 }
 
 .product-info p {
   font-size: 13px;
-  color: #777777;
+  color: var(--nx-text-tertiary);
   margin: 4px 0 0;
 }
 
