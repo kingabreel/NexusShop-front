@@ -1,6 +1,6 @@
 .profile-page {
     padding: 24px;
-    background: #f5f5f5;
+    background: var(--nx-bg-secondary);
     min-height: 100vh;
 
     display: flex;
@@ -11,7 +11,7 @@
 .profile-header-card,
 .profile-card {
     border-radius: 16px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--nx-border-color);
     box-shadow: none !important;
 }
 
@@ -34,8 +34,8 @@
     font-size: 24px;
     font-weight: 600;
 
-    background: #111827 !important;
-    color: white !important;
+    background: var(--nx-gray-900) !important;
+    color: var(--nx-text-inverse) !important;
 }
 
 .user-details {
@@ -43,11 +43,11 @@
         margin: 0;
         font-size: 24px;
         font-weight: 600;
-        color: #111827;
+        color: var(--nx-text-primary);
     }
 
     span {
-        color: #6b7280;
+        color: var(--nx-text-tertiary);
         font-size: 14px;
     }
 }
@@ -57,8 +57,8 @@
     margin-top: 4px;
     padding: 2px 8px;
     border-radius: 4px;
-    background: #f3f4f6;
-    color: #6b7280;
+    background: var(--nx-bg-tertiary);
+    color: var(--nx-text-tertiary);
     font-size: 12px;
 }
 
@@ -89,14 +89,14 @@ mat-card-content {
     label {
         font-size: 13px;
         font-weight: 500;
-        color: #6b7280;
+        color: var(--nx-text-tertiary);
         text-transform: uppercase;
         letter-spacing: .5px;
     }
 
     span {
         font-size: 16px;
-        color: #111827;
+        color: var(--nx-text-primary);
         font-weight: 500;
     }
 }
@@ -113,8 +113,8 @@ mat-card-content {
     align-items: center;
     padding: 4px 12px;
     border-radius: 16px;
-    background: #e0e7ff;
-    color: #3730a3;
+    background: var(--nx-info-bg);
+    color: var(--nx-info-text);
     font-size: 13px;
     font-weight: 500;
 }
@@ -129,7 +129,7 @@ mat-card-content {
     label {
         font-size: 13px;
         font-weight: 500;
-        color: #6b7280;
+        color: var(--nx-text-tertiary);
         text-transform: uppercase;
         letter-spacing: .5px;
         display: block;
@@ -148,8 +148,8 @@ mat-card-content {
     align-items: center;
     padding: 4px 12px;
     border-radius: 16px;
-    background: #d1fae5;
-    color: #065f46;
+    background: var(--nx-success-bg);
+    color: var(--nx-success-text);
     font-size: 13px;
     font-weight: 500;
 }
@@ -174,12 +174,12 @@ mat-card-content {
             font-size: 48px;
             width: 48px;
             height: 48px;
-            color: #9ca3af;
+            color: var(--nx-text-muted);
         }
 
         p {
             margin: 0;
-            color: #6b7280;
+            color: var(--nx-text-tertiary);
             font-size: 16px;
         }
     }

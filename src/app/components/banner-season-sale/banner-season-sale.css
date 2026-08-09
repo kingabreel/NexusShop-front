@@ -1,19 +1,19 @@
 .banner{
-    background: linear-gradient(to right, #00c6ff, #7b2ff7);
+    background: linear-gradient(to right, var(--nx-gradient-start), var(--nx-gradient-end));
     display: flex;
     padding: 30px;
     border-radius: 40px;
     transition: all 0.3s ease;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px var(--nx-shadow);
     max-width: 1400px;
 }
 
 .title{
     border-radius: 20px;
-    color:#ffffff;
-    background: rgba(255, 255, 255, 0.2);
+    color: var(--nx-text-inverse);
+    background: var(--nx-overlay-light);
     border: none;
     padding: 4px 15px;
     margin-bottom: 20px;
@@ -21,54 +21,54 @@
 }
 
 .banner-text h1{
-    color:#ffffff;
+    color: var(--nx-text-inverse);
     margin-bottom: 20px;
     font-size: 2rem;
     font-weight: 800;
 }
 
 .banner-text h1 span{
-    color:#f3ea6c;
+    color: var(--nx-star-filled);
     margin-bottom: 20px;
 }
 
 .banner-text h3 {
-    color:#ffffff;
+    color: var(--nx-text-inverse);
     margin-bottom: 20px;
 }
 
 .btn-shop{
-    background-color: #ffffff;
+    background-color: var(--nx-text-inverse);
     border-radius: 10px;
     padding: 15px;
-    color:#00c6ff;
+    color: var(--nx-accent);
     border: none;
     font-weight: bold;
     margin-bottom: 20px;
     margin-right: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(66, 212, 245, 0.3);
+    box-shadow: 0 4px 10px var(--nx-shadow);
     transition: all .2s ease;
 }
 
 .btn-details{
-    background-color: #ffffff;
+    background-color: var(--nx-text-inverse);
     border-radius: 10px;
     padding: 15px;
-    color:#000000;
+    color: var(--nx-text-primary);
     border: none;
     font-weight: bold;
     margin-bottom: 20px;
     margin-right: 20px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(66, 212, 245, 0.3);
+    box-shadow: 0 4px 10px var(--nx-shadow);
     transition: all .2s ease;
 }
 
 .discount-coupom{
     border-radius: 20px;
-    color:#ffffff;
-    background: rgba(255, 255, 255, 0.2);
+    color: var(--nx-text-inverse);
+    background: var(--nx-overlay-light);
     border: none;
     padding: 4px 15px;
     display: inline-block
@@ -86,10 +86,10 @@
 
 .btn-shop:hover {
     transform: translateY(-2px);
-    background: #e9e9e9;
+    background: var(--nx-gray-300);
 }
 
 .btn-details:hover {
     transform: translateY(-2px);
-    background: #efefef;
+    background: var(--nx-gray-300);
 }

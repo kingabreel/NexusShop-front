@@ -9,15 +9,15 @@
     border: none;
     border-radius: 50%;
 
-    background: #1976d2;
-    color: #fff;
+    background: var(--nx-accent-blue);
+    color: var(--nx-text-inverse);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px var(--nx-shadow-strong);
 
     z-index: 9999;
 
@@ -25,7 +25,7 @@
 
     &:hover {
         transform: scale(1.08);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 6px 16px var(--nx-shadow-strong);
     }
 
 }

@@ -29,6 +29,10 @@
                 <img style="border-radius: 50%" src="https://placehold.co/50" alt="account-profile">
             </a>
 
+            <button class="theme-toggle" (click)="toggleTheme()" title="Toggle night mode">
+                <mat-icon>{{ themeStore.isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+            </button>
+
         </div>
 
         } @else {
@@ -42,6 +46,10 @@
                 <mat-icon>shopping_cart</mat-icon>
                 <span class="badge">2</span>
             </a>
+
+            <button class="theme-toggle" (click)="toggleTheme()" title="Toggle night mode">
+                <mat-icon>{{ themeStore.isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+            </button>
 
         </div>
 

@@ -1,10 +1,10 @@
 .card-container {
     position: relative;
     width: 250px;
-    background: #fff;
+    background: var(--nx-bg-card);
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    box-shadow: 0 2px 12px var(--nx-shadow);
     transition: .2s;
 }
 
@@ -26,8 +26,8 @@
 }
 
 .tags span {
-    background: white;
-    color: #555;
+    background: var(--nx-bg-card);
+    color: var(--nx-text-secondary);
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 10px;
@@ -38,8 +38,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: #ff4d6d;
-    color: white;
+    background: var(--nx-danger);
+    color: var(--nx-text-inverse);
     padding: 4px 8px;
     border-radius: 12px;
     font-size: 10px;
@@ -62,7 +62,7 @@
     font-size: 18px;
     font-weight: 700;
     margin: 0;
-    color: #111;
+    color: var(--nx-text-primary);
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -71,7 +71,7 @@
 
 .card-container h2 {
     font-size: 12px;
-    color: #777;
+    color: var(--nx-text-tertiary);
     font-weight: 400;
     margin-top: 4px;
     line-height: 1.4;
@@ -84,7 +84,7 @@
     display: flex;
     align-items: center;
     gap: 2px;
-    color: #f5b301;
+    color: var(--nx-star-filled);
     font-size: 12px;
     font-weight: 600;
 }
@@ -112,13 +112,13 @@
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-    color: #111;
+    color: var(--nx-text-primary);
 }
 
 .original-price {
     margin: 0;
     font-size: 12px;
-    color: #999;
+    color: var(--nx-text-muted);
     text-decoration: line-through;
 }
 
@@ -127,22 +127,22 @@
     height: 34px;
     border: none;
     border-radius: 12px;
-    background: #42d4f5;
-    color: white;
+    background: var(--nx-accent);
+    color: var(--nx-text-inverse);
     cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0 4px 10px rgba(66, 212, 245, 0.3);
+    box-shadow: 0 4px 10px var(--nx-shadow);
 
     transition: all .2s ease;
 }
 
 .add-btn:hover {
     transform: translateY(-2px);
-    background: #27c9ef;
+    background: var(--nx-accent-hover);
 }
 
 .add-btn mat-icon {
