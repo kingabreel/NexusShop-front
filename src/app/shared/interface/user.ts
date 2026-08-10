@@ -1,4 +1,5 @@
 import { Address } from "./address";
+import { Store } from "./store";
 
 export interface User {
     id?: number;
@@ -7,4 +8,7 @@ export interface User {
     password?: string;
     username: string;
     address?: Address;
+    roles?: string[];
+    provider?: string;
+    store?: Store;
 }

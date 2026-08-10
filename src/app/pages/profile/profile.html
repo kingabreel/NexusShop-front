@@ -13,6 +13,9 @@
                 <div class="user-details">
                     <h1>{{ user.username }}</h1>
                     <span>{{ user.email }}</span>
+                    @if (user.provider) {
+                        <span class="provider-badge">{{ user.provider }}</span>
+                    }
                 </div>
 
             </div>
@@ -26,12 +29,38 @@
 
     </mat-card>
 
+    @if (user.roles && user.roles.length > 0) {
     <mat-card class="profile-card">
 
         <mat-card-header>
             <mat-card-title>
-                <mat-icon>person</mat-icon>
-                Informações Pessoais
+                <mat-icon>security</mat-icon>
+                Papéis
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+
+            <div class="roles-list">
+                @for (role of user.roles; track role) {
+                    <span class="role-badge">{{ role }}</span>
+                }
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+    }
+
+    @if (store) {
+    <mat-card class="profile-card store-card">
+
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon>store</mat-icon>
+                {{ store.name }}
             </mat-card-title>
         </mat-card-header>
 
@@ -43,75 +72,71 @@
 
                 <div class="field">
                     <label>Nome</label>
-                    <span>{{ user.username }}</span>
+                    <span>{{ store.name }}</span>
                 </div>
 
                 <div class="field">
                     <label>Email</label>
-                    <span>{{ user.email }}</span>
+                    <span>{{ store.email }}</span>
                 </div>
 
                 <div class="field">
-                    <label>Celular</label>
-                    <span>{{ user.cellphone }}</span>
+                    <label>Telefone</label>
+                    <span>{{ store.phone }}</span>
                 </div>
 
             </div>
+
+            @if (store.tags && store.tags.length > 0) {
+            <div class="tags-section">
+                <label>Categorias</label>
+                <div class="tags-list">
+                    @for (tag of store.tags; track tag) {
+                        <span class="tag-badge">{{ tag }}</span>
+                    }
+                </div>
+            </div>
+            }
 
         </mat-card-content>
 
     </mat-card>
 
+    @if (store.products && store.products.length > 0) {
     <mat-card class="profile-card">
 
         <mat-card-header>
             <mat-card-title>
-                <mat-icon>home</mat-icon>
-                Endereço
+                <mat-icon>shopping_bag</mat-icon>
+                Produtos da Loja
             </mat-card-title>
         </mat-card-header>
 
         <mat-divider></mat-divider>
 
-        @if (user.address) {
         <mat-card-content>
-
-            <div class="info-grid">
-
-                <div class="field">
-                    <label>Rua</label>
-                    <span>{{ user.address.street }}</span>
-                </div>
-
-                <div class="field">
-                    <label>Número</label>
-                    <span>{{ user.address.number }}</span>
-                </div>
-
-                <div class="field">
-                    <label>Bairro</label>
-                    <span>{{ user.address.neighborhood }}</span>
-                </div>
-
-                <div class="field">
-                    <label>Cidade</label>
-                    <span>{{ user.address.city }}</span>
-                </div>
-
-                <div class="field">
-                    <label>Estado</label>
-                    <span>{{ user.address.state }}</span>
-                </div>
-
-                <div class="field">
-                    <label>CEP</label>
-                    <span>{{ user.address.zipCode }}</span>
-                </div>
-
+            <div class="products-grid">
+                @for (product of store.products; track product.id) {
+                    <app-product-card [product]="product"></app-product-card>
+                }
             </div>
-
         </mat-card-content>
-    }
+
     </mat-card>
+    }
+    } @else if (!loadingStore) {
+    <mat-card class="profile-card no-store-card">
+
+        <mat-card-content class="no-store-content">
+            <mat-icon>storefront</mat-icon>
+            <p>Você ainda não tem uma loja cadastrada.</p>
+            <button mat-flat-button color="primary" (click)="openCreateStoreDialog()" [disabled]="loadingStore">
+                <mat-icon>add</mat-icon>
+                Cadastrar Loja
+            </button>
+        </mat-card-content>
+
+    </mat-card>
+    }
 
 </div>

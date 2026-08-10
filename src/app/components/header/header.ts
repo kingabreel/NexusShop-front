@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventService } from '../../shared/service/search-event-service';
+import { ThemeStore } from '../../shared/store/theme.store';
 @Component({
   selector: 'app-header',
   imports: [MatIconModule, CommonModule, FormsModule],
@@ -14,6 +15,7 @@ import { EventService } from '../../shared/service/search-event-service';
 
 export class Header {
   authStore = inject(AuthStore);
+  themeStore = inject(ThemeStore);
 
   searchText: string = '';
 
@@ -30,5 +32,9 @@ export class Header {
 
   searchProduct(query: string) {
     this.eventService.emitSearch(query);
+  }
+
+  toggleTheme() {
+    this.themeStore.toggleTheme();
   }
 }

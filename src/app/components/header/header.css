@@ -1,7 +1,7 @@
 .header {
-    background: linear-gradient(90deg, #fcfcfc, #f1f1f1);
+    background: var(--nx-bg-primary);
     padding: 12px 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px var(--nx-shadow-strong);
     height: 5rem;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
     align-items: center;
     gap: 10px;
     justify-content: center;
-    color: #50d2e9;
+    color: var(--nx-accent);
 }
 
 nav {
@@ -37,7 +37,7 @@ nav {
 nav>a,
 div.actions>a {
     text-decoration: none;
-    color: #333;
+    color: var(--nx-text-primary);
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 1px
@@ -45,7 +45,7 @@ div.actions>a {
 
 nav>a:hover,
 div.actions>a:hover {
-    color: #60cde0;
+    color: var(--nx-accent-hover);
     transition: color 0.3s ease-in-out;
 }
 
@@ -54,7 +54,7 @@ div.actions>a:hover {
     flex: 1;
     width: 450px;
     height: 40px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--nx-border-input);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -65,19 +65,21 @@ div.actions>a:hover {
     border: none;
     border-radius: 4px 0 0 4px;
     outline: none;
+    background: var(--nx-bg-input);
+    color: var(--nx-text-primary);
 }
 
 .search-box button {
-    background: #50d2e9;
+    background: var(--nx-accent);
     border: none;
-    color: white;
+    color: var(--nx-text-inverse);
     padding: 0 15px;
     cursor: pointer;
     border-radius: 0 4px 4px 0;
 }
 
 .search-box button:hover {
-    background: #60cde0;
+    background: var(--nx-accent-hover);
 }
 
 .actions {
@@ -87,7 +89,7 @@ div.actions>a:hover {
 }
 
 .actions a {
-    color: white;
+    color: var(--nx-text-inverse);
     text-decoration: none;
     font-size: 14px;
 }
@@ -106,10 +108,27 @@ div.actions>a:hover {
     position: absolute;
     top: -6px;
     right: -10px;
-    background: yellow;
-    color: black;
+    background: var(--nx-badge-bg);
+    color: var(--nx-badge-text);
     font-size: 12px;
     padding: 2px 6px;
     border-radius: 50%;
     font-weight: bold;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--nx-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.theme-toggle:hover {
+    background: var(--nx-bg-secondary);
 }

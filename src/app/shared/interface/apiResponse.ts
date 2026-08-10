@@ -1,6 +1,6 @@
 export interface ApiResponse<T> {
-  data: {
-    content: T[];
-  };
-  message: string;
+    data: {
+        content: T[];
+    };
+    message: string;
 }
